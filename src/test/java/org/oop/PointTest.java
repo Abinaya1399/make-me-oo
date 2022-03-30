@@ -1,60 +1,61 @@
 package org.oop;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PointTest {
     @Test
-    void ShouldReturnDistanceOfZeroWhenTwoPointsWithSameXAndYCoordinates() {
+    void ShouldReturnZeroWhenDistanceBetweenTwoPointsHavingSameXAndYCoordinatesIsCalculated() {
         Point origin = new Point(0, 0);
-        Assertions.assertEquals(0, origin.distance(origin));
+        assertEquals(0, origin.distance(origin));
     }
 
     @Test
-    void ShouldReturnOneWhenDistanceBetweenOriginAndPointsOnUnitCircle() {
+    void ShouldReturnOneWhenDistanceBetweenOriginAndPointsOnUnitCircleIsCalculated() {
         Point origin = new Point(0, 0);
-        Point point1 = new Point(1, 0);
-        Point point2 = new Point(0, 1);
+        Point fromPoint = new Point(1, 0);
+        Point toPoint = new Point(0, 1);
 
-        Assertions.assertEquals(1, origin.distance(point1));
-        Assertions.assertEquals(1, origin.distance(point2));
+        assertEquals(1, origin.distance(fromPoint));
+        assertEquals(1, origin.distance(toPoint));
     }
 
     @Test
-    void ShouldReturnTwoWhenDistanceBetweenTwoOppositePointsOnUnitCircle() {
-        Point point1 = new Point(1, 0);
-        Point point2 = new Point(-1, 0);
+    void ShouldReturnTwoWhenDistanceBetweenTwoOppositePointsOnUnitCircleIsCalculated() {
+        Point fromPoint = new Point(1, 0);
+        Point toPoint = new Point(-1, 0);
 
-        Assertions.assertEquals(2, point1.distance(point2));
+        assertEquals(2, fromPoint.distance(toPoint));
     }
 
     @Test
-    void ShouldReturnZeroRadiansAwayWhenOriginAndPointOnPositiveXAxis() {
+    void ShouldReturnZeroWhenDirectionBetweenOriginAndPointOnPositiveXAxisIsCalculated() {
         Point origin = new Point(0, 0);
-        Point point1 = new Point(1, 0);
-        Point point2 = new Point(3, 0);
+        Point fromPoint = new Point(1, 0);
+        Point toPoint = new Point(3, 0);
 
-        Assertions.assertEquals(0, origin.direction(point1));
-        Assertions.assertEquals(0, origin.direction(point2));
+        assertEquals(0, origin.direction(fromPoint));
+        assertEquals(0, origin.direction(toPoint));
     }
 
     @Test
-    void ShouldReturnPiRadiansAwayWhenOriginAndPointOnNegativeXAxis() {
+    void ShouldReturnPiWhenDirectionBetweenOriginAndPointOnNegativeXAxisIsCalculated() {
         Point origin = new Point(0, 0);
-        Point point1 = new Point(-1, 0);
-        Point point2 = new Point(-3, 0);
+        Point fromPoint = new Point(-1, 0);
+        Point toPoint = new Point(-3, 0);
 
-        Assertions.assertEquals(Math.PI, origin.direction(point1));
-        Assertions.assertEquals(Math.PI, origin.direction(point2));
+        assertEquals(Math.PI, origin.direction(fromPoint));
+        assertEquals(Math.PI, origin.direction(toPoint));
     }
 
     @Test
-    void ShouldReturnHalfPiRadiansAwayWhenOriginAndPointOnYAxis() {
+    void ShouldReturnHalfPiWhenDirectionBetweenOriginAndPointOnYAxisIsCalculated() {
         Point origin = new Point(0, 0);
-        Point point1 = new Point(0, 1);
-        Point point2 = new Point(0, 3);
+        Point fromPoint = new Point(0, 1);
+        Point toPoint = new Point(0, 3);
 
-        Assertions.assertEquals(Math.PI / 2, origin.direction(point2));
-        Assertions.assertEquals(Math.PI / 2, origin.direction(point1));
+        assertEquals(Math.PI / 2, origin.direction(toPoint));
+        assertEquals(Math.PI / 2, origin.direction(fromPoint));
     }
 }
